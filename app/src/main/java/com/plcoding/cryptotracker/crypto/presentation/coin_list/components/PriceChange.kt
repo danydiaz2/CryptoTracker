@@ -28,13 +28,13 @@ fun PriceChangeIndicator(
     modifier: Modifier = Modifier
 ) {
 
-    val contentColor = if (change.value > 0) {
+    val contentColor = if (change.value < 0) {
         MaterialTheme.colorScheme.onErrorContainer
     } else {
         Color.Green
     }
 
-    val backgroundColor = if (change.value > 0) {
+    val backgroundColor = if (change.value < 0) {
         MaterialTheme.colorScheme.errorContainer
     } else {
         greenBackground
