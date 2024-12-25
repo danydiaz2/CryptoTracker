@@ -47,6 +47,5 @@ fun CoinListScreen(
             }
 
         }
-
     }
 }

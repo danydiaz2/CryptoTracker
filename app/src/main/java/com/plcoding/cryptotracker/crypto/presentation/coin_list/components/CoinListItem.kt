@@ -1,5 +1,6 @@
 package com.plcoding.cryptotracker.crypto.presentation.coin_list.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -19,9 +20,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.plcoding.cryptotracker.crypto.domain.Coin
 import com.plcoding.cryptotracker.crypto.presentation.models.CoinUi
+import com.plcoding.cryptotracker.crypto.presentation.models.toCoinUi
+import com.plcoding.cryptotracker.ui.theme.CryptoTrackerTheme
 
 @Composable
 fun CoinListItem(
@@ -47,10 +52,10 @@ fun CoinListItem(
             imageVector = ImageVector.vectorResource(id = coinUi.iconRes),
             contentDescription = coinUi.name,
             tint = MaterialTheme.colorScheme.primary,
-            modifier = modifier.size(85.dp)
+            modifier = Modifier.size(85.dp)
         )
 
-        Column(modifier = Modifier.weight(1f)) {
+        Column(modifier = Modifier.weight(3f)) {
 
             Text(
                 text = coinUi.symbol,
@@ -82,3 +87,27 @@ fun CoinListItem(
     }
 
 }
+
+@PreviewLightDark
+@Composable
+private fun CoinListItemPreview() {
+    CryptoTrackerTheme {
+        CoinListItem(
+            coinUi = previewCoin,
+            onItemClick = { /*TODO*/ },
+            modifier = Modifier.background(
+                MaterialTheme.colorScheme.background
+            )
+        )
+    }
+}
+
+internal val previewCoin = Coin(
+    id = "bitcoin",
+    rank = 1,
+    name = "Bitcoin",
+    symbol = "BTC",
+    marketCapUsd = 124127396.75,
+    priceUsd = 62828.15,
+    changePercent24Hr = -0.1
+).toCoinUi()
