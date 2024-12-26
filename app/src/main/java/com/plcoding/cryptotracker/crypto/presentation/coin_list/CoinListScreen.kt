@@ -28,6 +28,7 @@ import kotlinx.coroutines.withContext
 fun CoinListScreen(
     state: CoinListState,
     events: Flow<CoinListEvent>,
+    onAction: (CoinListAction) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
@@ -71,7 +72,7 @@ fun CoinListScreen(
                 CoinListItem(
                     coinUi = coinUi,
                     onItemClick = {
-
+                        onAction(CoinListAction.OnCoinClick(coinUi))
                     },
                     modifier = Modifier.fillMaxWidth()
                 )

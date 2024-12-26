@@ -72,7 +72,7 @@ fun CoinListItem(
         }
         Column(horizontalAlignment = Alignment.End) {
             Text(
-                text = "$ ${coinUi.marketCapUsd.formatted}",
+                text = "$ ${coinUi.priceUsd.formatted}",
                 fontSize = 16.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = contentColor
